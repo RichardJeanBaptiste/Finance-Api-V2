@@ -4,7 +4,7 @@ import {useState} from 'react';
 import axios from 'axios';
 
 
-export default function dashboard() {
+export default function Dashboard() {
 
     const [name, SetName] = useState("");
     const [image, SetImage] = useState("");
