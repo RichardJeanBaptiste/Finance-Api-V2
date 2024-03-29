@@ -6,6 +6,17 @@ const quoteSchema = new mongoose.Schema({
     },
     quote: {
         type: String,
+    },
+    image: {
+        type: String,
+    },
+    bio: {
+        desc: String,
+        life: String,
+        wiki: String,
+        networth: String,
+        education: String,
+        occupation: String
     }
 });
 
