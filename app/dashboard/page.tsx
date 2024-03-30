@@ -6,77 +6,74 @@ import axios from 'axios';
 
 export default function Dashboard() {
 
-    const [name, SetName] = useState("");
-    const [image, SetImage] = useState("");
-    const [quote, SetQuote] = useState("");
-    const [desc, SetDesc] = useState("");
-    const [life, SetLife] = useState("");
-    const [wiki, SetWiki] = useState("");
-    const [education, SetEducation] = useState("");
-    const [occupation, SetOccupation] = useState("");
+    const [currentQuote, SetCurrentQuote] = useState("");
+    const [quotes, SetQuotes] = useState<any>([]);
+    const [formValues, SetFormValues] = useState({
+        name: '',
+        image: '',
+        quote: '',
+        desc: '',
+        life: '',
+        wiki: '',
+        education: '',
+        occupation: '',
+    })
 
-
-    const handleName = (e: any) => {
-        SetName(e.target.value);
+    const handleChange = (e: any) => {
+        console.log(e);
+        const { name, value } = e.target;
+        console.log(name + " " + value);
+        SetFormValues({ ...formValues, [name]: value });
     }
 
-    const handleImage = (e:any) => {
-        SetImage(e.target.value);
+    const handleCurrentQuote = (e: any) => {
+        SetCurrentQuote(e.target.value);
     }
 
-    const handleQuote = (e: any) => {
-        SetQuote(e.target.value);
+    const addQuoteToList = (e: any) => {
+
+        e.preventDefault();
+
+        if(currentQuote != ""){
+            let temp = [...quotes];
+            temp.push(currentQuote);
+            SetQuotes(temp);
+            SetCurrentQuote("");
+        } 
     }
 
-    const handleDesc = (e: any) => {
-        SetDesc(e.target.value);
+    const removeQuote = (quoteToRemove: string) => {
+
+        let temp =[...quotes];
+        temp = temp.filter((item) => item !== quoteToRemove);
+        SetQuotes(temp);
     }
 
-    const handleLife = (e: any) => {
-        SetLife(e.target.value);
-    }
-
-    const handleWiki = (e: any) => {
-        SetWiki(e.target.value);
-    }
-
-    const handleEducation = (e: any) => {
-        SetEducation(e.target.value);
-    }
-
-    const handleOccupation = (e: any) => {
-        SetOccupation(e.target.value);
-    }
     
     const handleSubmit = (e: any) => {
 
         e.preventDefault();
 
-        axios.post('/api/add_quote', {
-            name: name,
-            image: image,
-            quote: quote,
-            desc: desc,
-            life: life,
-            wiki: wiki,
-            education: education,
-            occupation: occupation
-        }).then((response) => {
+        axios.post('/api/add_quote', formValues)
+        .then((response) => {
             console.log(response);
         }).catch((err) => {
             console.log(err);
         })
         console.log("submit");
     }
+
     const clearFields = () => {
-        SetName("");
-        SetImage("");
-        SetQuote("");
-        SetDesc("");
-        SetLife("");
-        SetWiki("");
-        SetEducation("");
-        SetOccupation("");
+        SetFormValues({
+            name: '',
+            image: '',
+            quote: '',
+            desc: '',
+            life: '',
+            wiki: '',
+            education: '',
+            occupation: '',
+        })
     }
 
 
@@ -84,20 +81,39 @@ export default function Dashboard() {
         <div>
             <h3>Dashboard</h3>
 
-            <div>
+            <button onClick={clearFields}>Clear</button>
+            <div style={{ display: 'flex', flexDirection: 'row'}}>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column'}}>
-                    <input placeholder="Name" type="text" onChange={handleName} value={name}/>
-                    <input placeholder="Image" type="text" onChange={handleImage} value={image}/>
-                    <input placeholder="Quote" type="text"onChange={handleQuote} value={quote}/>
-                    <textarea placeholder="Description" rows={4} cols={50} onChange={handleDesc} value={desc}/>
-                    <input placeholder="Life" type="text" onChange={handleLife} value={life}/>
-                    <input placeholder="Wiki" type="text" onChange={handleWiki} value={wiki}/>
-                    <input placeholder="Education" type="text" onChange={handleEducation} value={education}/>
-                    <input placeholder="Occupation" type="text" onChange={handleOccupation} value={occupation}/>
+                    <input placeholder="Name" type="text" name="name" onChange={handleChange} value={formValues.name}/>
+                    <input placeholder="Image" type="text" name="image" onChange={handleChange} value={formValues.image}/>
+                    <textarea placeholder="Description" name="desc" rows={4} cols={50} onChange={handleChange} value={formValues.desc}/>
+                    <input placeholder="Life" type="text" name="life" onChange={handleChange} value={formValues.life}/>
+                    <input placeholder="Wiki" type="text" name="wiki" onChange={handleChange} value={formValues.wiki}/>
+                    <input placeholder="Education" name="education" type="text" onChange={handleChange} value={formValues.education}/>
+                    <input placeholder="Occupation" name="occupation" type="text" onChange={handleChange} value={formValues.occupation}/>
                     <input value="Submit" type="submit"/>
-                </form> 
+                </form>
 
-                <button onClick={clearFields}>Clear</button>
+                <div>
+                    <form onSubmit={addQuoteToList}>
+                        <input placeholder="Enter Quote" value={currentQuote} type="text" onChange={handleCurrentQuote}/>
+                        <button type="submit">+</button>
+                    </form>
+                </div>
+
+                <div>
+                    <ul>
+                        {quotes.map((x: string, index: number) => {
+                            return (
+                                <div style={{ display: 'flex', flexDirection: 'row'}}>
+                                    <li key={index}>{x}</li>
+                                    <button onClick={() => removeQuote(x)}>X</button>
+                                </div>
+                            )
+                        })}
+                    </ul>
+                </div> 
+                
             </div>
         </div>
     )

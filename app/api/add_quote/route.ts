@@ -17,20 +17,21 @@ export async function POST(request: Request){
     
         let data = await request.json();
 
-        let newQuote = new Quotes({
-            name: data.name.toLowerCase(),
-            quote: data.quote,
-            image: data.image,
-            bio: {
-                desc: data.desc,
-                life: data.life,
-                wiki: data.wiki,
-                education: data.education,
-                occupation: data.occupation
-            }
-        })
+        console.log(data);
+        // let newQuote = new Quotes({
+        //     name: data.name.toLowerCase(),
+        //     quote: data.quote,
+        //     image: data.image,
+        //     bio: {
+        //         desc: data.desc,
+        //         life: data.life,
+        //         wiki: data.wiki,
+        //         education: data.education,
+        //         occupation: data.occupation
+        //     }
+        // })
         
-        await newQuote.save();
+        // await newQuote.save();
         return NextResponse.json({msg: "Quote Saved"}, {status: 200});
         
     } catch (error) {
