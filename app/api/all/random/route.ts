@@ -15,6 +15,8 @@ export async function GET(request: NextRequest){
             });
         }
 
+        console.log("random route");
+
         let query = await Quotes.find({}).then((docs) => {
 
             let random = Math.floor(Math.random() * docs.length)
