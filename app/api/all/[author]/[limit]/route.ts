@@ -11,7 +11,7 @@ export async function GET(request: NextRequest){
     const url = new URL(request.url);
 
     //console.log(url);
-    let modifiedUrl = url.href.replace('http://localhost:3000/api/all/', '');
+    let modifiedUrl = url.href.replace('https://finance-api-v2-tau.vercel.app/api/all/', '');
     let modifiedUrlArr = modifiedUrl.split("/");
 
     let author = modifiedUrlArr[0].replace("_", " ");

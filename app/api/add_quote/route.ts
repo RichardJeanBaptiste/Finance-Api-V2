@@ -32,6 +32,7 @@ export async function POST(request: Request){
         // })
         
         // await newQuote.save();
+        mongoose.disconnect();
         return NextResponse.json({msg: "Quote Saved"}, {status: 200});
         
     } catch (error) {

@@ -19,6 +19,9 @@ export async function GET(request: NextRequest){
 
             let random = Math.floor(Math.random() * docs.length)
 
+            console.log(random);
+            console.log(docs.length);
+
             mongoose.disconnect();
             return docs[random];
         });

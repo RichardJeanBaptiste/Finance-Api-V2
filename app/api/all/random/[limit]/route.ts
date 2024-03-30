@@ -9,8 +9,8 @@ import { parse } from "path";
 export async function GET(request: NextRequest){
 
     const url = new URL(request.url);
-    let modifiedUrl = url.href.replace('http://localhost:3000/api/all/random/', '');
-
+    //let modifiedUrl = url.href.replace('http://localhost:3000/api/all/random/', '');
+    let modifiedUrl = url.href.replace('https://finance-api-v2-tau.vercel.app/api/all/', '');
     console.log(modifiedUrl);
 
     try {

@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 
 export default function Home() {
 
-  let uri = "-"
+  let uri = "https://finance-api-v2-tau.vercel.app"
 
   return (
     <div>
@@ -19,7 +19,7 @@ export default function Home() {
         <p>Example call: {`${uri}/api/all/robert_kiysokai`}</p>
         <h4>With limits - </h4>
         <p>Api call: {`${uri}/api/all/[author_name]/[limit]`}</p>
-        <p>Example call: {`${uri}/api/all/robert_kiysokai/4`}</p>
+        <p>Example call: <a href={`${uri}/api/all/robert_kiysokai/4`}>{`${uri}/api/all/robert_kiysokai/4`}</a></p>
 
         <br/>
 
