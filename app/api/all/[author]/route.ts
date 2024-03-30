@@ -8,7 +8,7 @@ import { isDynamicServerError } from "next/dist/client/components/hooks-server-c
 export async function GET(request: NextRequest){
 
     const url = new URL(request.url);
-    let modifiedUrl = url.href.replace(`https://finance-api-v2-tau.vercel.app/api/all/`, '');
+    let modifiedUrl = url.href.replace(`${process.env.NEXT_PUBLIC_HOST}/api/all/`, '');
     modifiedUrl = modifiedUrl.replace("_", " ");
 
     console.log("author route")

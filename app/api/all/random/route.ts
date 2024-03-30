@@ -22,10 +22,10 @@ export async function GET(request: NextRequest){
             console.log(random);
             console.log(docs.length);
 
-            mongoose.disconnect();
             return docs[random];
         });
-    
+
+        
         return NextResponse.json(query, {status: 200})
   
     } catch (error) {
