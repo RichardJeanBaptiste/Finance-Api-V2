@@ -2,7 +2,6 @@ import { NextResponse, NextRequest } from "next/server";
 import mongoose from "mongoose";
 import { Quotes } from "../../../Schemas";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
-import { parse } from "path";
 
 
 
@@ -10,7 +9,8 @@ export async function GET(request: NextRequest){
 
     const url = new URL(request.url);
     let modifiedUrl = url.href.replace(`${process.env.NEXT_PUBLIC_HOST}/api/all/`, '');
-    console.log(modifiedUrl);
+    let lastIndex = modifiedUrl.lastIndexOf("/");
+    modifiedUrl = modifiedUrl.substring(lastIndex + 1);
 
     try {
         let mongo_uri:string | undefined = process.env.NEXT_PUBLIC_MONGO_URI;
@@ -33,6 +33,7 @@ export async function GET(request: NextRequest){
             }
 
             mongoose.disconnect();
+            console.log(quotelist);
             return quotelist;
         });
     
