@@ -15,8 +15,6 @@ export async function GET(request: NextRequest){
             });
         }
 
-        console.log("random route");
-
         let query = await Quotes.find({}).then((docs) => {
 
             let random = Math.floor(Math.random() * docs.length)
@@ -28,7 +26,7 @@ export async function GET(request: NextRequest){
         });
 
         mongoose.disconnect();
-        return NextResponse.json({"data": query}, {status: 200})
+        return NextResponse.json({"msg": "abc123"}, {status: 200})
   
     } catch (error) {
   
