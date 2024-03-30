@@ -25,8 +25,8 @@ export async function GET(request: NextRequest){
             return docs[random];
         });
 
-        
-        return NextResponse.json(query, {status: 200})
+        mongoose.disconnect();
+        return NextResponse.json({"data": query}, {status: 200})
   
     } catch (error) {
   
