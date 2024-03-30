@@ -103,10 +103,10 @@ export default function Dashboard() {
 
                 <div>
                     <ul>
-                        {quotes.map((x: string, index: number) => {
+                        {quotes.map((x: string) => {
                             return (
                                 <div style={{ display: 'flex', flexDirection: 'row'}}>
-                                    <li key={index}>{x}</li>
+                                    <li>{x}</li>
                                     <button onClick={() => removeQuote(x)}>X</button>
                                 </div>
                             )
