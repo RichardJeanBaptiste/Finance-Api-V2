@@ -18,7 +18,6 @@ export async function GET(request: NextRequest){
             });
         }
 
-        console.log('random route')
         return NextResponse.json({"msg": "abc"}, {status: 200});
 
   
