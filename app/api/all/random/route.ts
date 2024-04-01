@@ -32,7 +32,7 @@ export async function GET(request: NextRequest){
         });
 
         mongoose.disconnect();
-        return NextResponse.json({query}, {status: 200})
+        return NextResponse.json({query}, {status: 200, headers:{'cache':'no-store'}})
   
     } catch (error) {
   
