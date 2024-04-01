@@ -17,21 +17,23 @@ export async function POST(request: Request){
     
         let data = await request.json();
 
-        console.log(data);
-        // let newQuote = new Quotes({
-        //     name: data.name.toLowerCase(),
-        //     quote: data.quote,
-        //     image: data.image,
-        //     bio: {
-        //         desc: data.desc,
-        //         life: data.life,
-        //         wiki: data.wiki,
-        //         education: data.education,
-        //         occupation: data.occupation
-        //     }
-        // })
+        for(let i = 0; i < data.quotes.length; i++){
+            let newQuote = new Quotes({
+                name: data.name.toLowerCase(),
+                quote: data.quotes[i],
+                image: data.image,
+                bio: {
+                    desc: data.desc,
+                    life: data.life,
+                    wiki: data.wiki,
+                    education: data.education,
+                    occupation: data.occupation
+                }
+            })
+            
+            await newQuote.save();
+        }
         
-        // await newQuote.save();
         mongoose.disconnect();
         return NextResponse.json({msg: "Quote Saved"}, {status: 200});
         

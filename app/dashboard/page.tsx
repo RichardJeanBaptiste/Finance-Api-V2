@@ -16,7 +16,7 @@ export default function Dashboard() {
         life: '',
         wiki: '',
         education: '',
-        occupation: '',
+        occupation: ''
     })
 
     const handleChange = (e: any) => {
@@ -54,7 +54,13 @@ export default function Dashboard() {
 
         e.preventDefault();
 
-        axios.post('/api/add_quote', formValues)
+
+        let data = {
+            ...formValues,
+            quotes: quotes,
+        }
+
+        axios.post('/api/add_quote', data)
         .then((response) => {
             console.log(response);
         }).catch((err) => {

@@ -16,17 +16,17 @@ export default function Home() {
 
         <h4>Get all quotes from specific author - </h4>
         <p>Api call: {`${uri}/api/all/[author_name]`}</p>
-        <p>Example call: {`${uri}/api/all/robert_kiysokai`}</p>
+        <p>Example call: {`${uri}/api/all/robert_kiyosaki`}</p>
         <h4>With limits - </h4>
         <p>Api call: {`${uri}/api/all/[author_name]/[limit]`}</p>
-        <p>Example call: <a href={`${uri}/api/all/robert_kiysokai/4`}>{`${uri}/api/all/robert_kiysokai/4`}</a></p>
+        <p>Example call: <a href={`${uri}/api/all/robert_kiyosaki/4`}>{`${uri}/api/all/robert_kiyosaki/4`}</a></p>
 
         <br/>
 
         <h4>Get random quote - </h4>
-        <p>Api call: {`${uri}/api/all/random`}</p>
+        <p>Api call: {`${uri}/api/random`}</p>
         <h4>With limits</h4>
-        <p>Api call: {`${uri}/api/all/random/[limit]`}</p>
+        <p>Api call: {`${uri}/api/random/[limit]`}</p>
     </div>
   );
 }
