@@ -19,14 +19,20 @@ export async function GET(request: NextRequest){
 
             let random = Math.floor(Math.random() * docs.length)
 
-            console.log(random);
-            console.log(docs.length);
+            let quotelist = [];
 
-            return docs[random];
+            for(let i = 0; i < 1; i++){
+                random = Math.floor(Math.random() * docs.length);
+                quotelist.push(docs[random])
+            }
+
+            mongoose.disconnect();
+            //console.log(quotelist);
+            return quotelist;
         });
 
         mongoose.disconnect();
-        return NextResponse.json({"msg": "abc123"}, {status: 200})
+        return NextResponse.json({query}, {status: 200})
   
     } catch (error) {
   
