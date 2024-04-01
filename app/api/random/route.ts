@@ -1,4 +1,7 @@
+'use server'
+
 import { NextResponse, NextRequest } from "next/server";
+import { redirect } from 'next/navigation';
 import mongoose from "mongoose";
 import { Quotes } from "../Schemas";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
@@ -15,14 +18,9 @@ export async function GET(request: NextRequest){
             });
         }
 
-        let query = await Quotes.find({}).then((docs) => {
+        redirect(`/api/all/random/1`);
 
-            let random = Math.floor(Math.random() * docs.length);
-            return docs[random];
-        });
-
-        mongoose.disconnect();
-        return NextResponse.json({query}, {status: 200, headers:{'Cache-Control':'no-store'}})
+        //return NextResponse.json({"msg": "abc"}, {status: 200});
   
     } catch (error) {
   

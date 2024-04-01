@@ -14,6 +14,17 @@ const nextConfig = {
       },
     ];
   },
+
+  async redirects() {
+    return [
+      // Basic redirect
+      {
+        source: '/api/all/random',
+        destination: '/api/all/random/1',
+        permanent: true,
+      },
+    ]
+  },
 };
 
 export default nextConfig;
