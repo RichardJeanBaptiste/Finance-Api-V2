@@ -20,7 +20,7 @@ export async function GET(request: NextRequest){
 
         redirect(`/api/all/random/1`);
 
-        //return NextResponse.json({"msg": "abc"}, {status: 200});
+        return NextResponse.json({"msg": "abc"}, {status: 200});
   
     } catch (error) {
   
