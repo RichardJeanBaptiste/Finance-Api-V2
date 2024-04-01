@@ -19,11 +19,8 @@ export async function GET(request: NextRequest){
         }
 
         console.log('random route')
-
-        redirect(`/api/all/random/1`);
-
-        
         return NextResponse.json({"msg": "abc"}, {status: 200});
+
   
     } catch (error) {
   

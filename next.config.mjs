@@ -19,7 +19,7 @@ const nextConfig = {
     return [
       // Basic redirect
       {
-        source: '/api/all/random',
+        source: '/api/random',
         destination: '/api/all/random/1',
         permanent: true,
       },
