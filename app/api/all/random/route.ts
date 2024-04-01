@@ -21,14 +21,13 @@ export async function GET(request: NextRequest){
 
             let quotelist = [];
 
-            for(let i = 0; i < 1; i++){
+            for(let i = 0; i < 5; i++){
                 random = Math.floor(Math.random() * docs.length);
                 quotelist.push(docs[random])
             }
 
-            mongoose.disconnect();
-            //console.log(quotelist);
-            return quotelist;
+            
+            return quotelist[0];
         });
 
         mongoose.disconnect();
