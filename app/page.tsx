@@ -16,18 +16,22 @@ export default function Home() {
 
         <h4>Get all quotes from specific author - </h4>
         <p>Api call: {`${uri}/api/all/[author_name]`}</p>
-        <p>Example call: <a href={`${uri}/api/all/robert_kiyosaki`}>{`${uri}/api/all/robert_kiyosaki`}</a></p>
+        <p>Example call: <a href={`${uri}/api/all/robert_kiyosaki`} target="_blank">{`${uri}/api/all/robert_kiyosaki`}</a></p>
         <h4>With limits - </h4>
         <p>Api call: {`${uri}/api/all/[author_name]/[limit]`}</p>
-        <p>Example call: <a href={`${uri}/api/all/robert_kiyosaki/4`}>{`${uri}/api/all/robert_kiyosaki/4`}</a></p>
+        <p>Example call: <a href={`${uri}/api/all/robert_kiyosaki/4`} target="_blank">{`${uri}/api/all/robert_kiyosaki/4`}</a></p>
 
+        <br/>
+
+        <h4>Get all authors - </h4>
+        <p>Api call: {`${uri}/api/get_authors`}</p>
         <br/>
 
         <h4>Get random quote - </h4>
         <p>Api call: {`${uri}/api/random`}</p>
         <h4>With limits</h4>
         <p>Api call: {`${uri}/api/random/[limit]`}</p>
-        <p>Example call: <a href={`${uri}/api/random/4`}>{`${uri}/api/random/4`}</a></p>
+        <p>Example call: <a href={`${uri}/api/random/4`} target="_blank">{`${uri}/api/random/4`}</a></p>
     </div>
   );
 }

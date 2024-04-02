@@ -19,13 +19,10 @@ function verifyToken(token: string) {
   }
 
 export async function POST(request: Request){
-
-
     try {
     
         let data = await request.json();
         
-
         let isLoggedIn = verifyToken(data.token);
 
         return NextResponse.json({isLoggedIn: isLoggedIn}, {status: 200});
