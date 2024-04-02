@@ -20,14 +20,15 @@ export default function Login() {
     }
 
     const handleSubmit = (e:any) => {
-        // `${uri}}/api/login`
         axios.post(`/api/login`, {
             username: username,
             password: password
         }).then((response) => {
+            console.log(response)
             if(response.data.msg === "Correct"){
                 alert("Login Successful");
-                router.push('/dashboard');
+                localStorage.setItem("jwtToken", response.data.token);
+                router.push(`/dashboard/${username}`);
             } else if(response.data.msg === "Incorrect"){
                 alert("Username of Password incorrect");
             } else {

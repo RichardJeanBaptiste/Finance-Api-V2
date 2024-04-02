@@ -2,8 +2,19 @@ import { NextResponse } from "next/server";
 import { Logins } from "../Schemas";
 import mongoose from "mongoose";
 import  bcrypt  from 'bcrypt';
+import jwt, { Secret } from 'jsonwebtoken';
 
 const saltRounds = 10;
+let secretKey: Secret; 
+
+if(process.env.NEXT_PUBLIC_SECRET_KEY != undefined){
+  secretKey= process.env.NEXT_PUBLIC_SECRET_KEY;
+};
+
+
+function generateToken(payload: any) {
+    return jwt.sign({data: payload}, secretKey, { expiresIn: 60 * 60 });
+}
 
 
 export async function POST(request: Request){
@@ -42,7 +53,7 @@ export async function POST(request: Request){
         });
 
         if(query === true){
-            return NextResponse.json({msg: "Correct"}, {status: 200});
+            return NextResponse.json({msg: "Correct", token: generateToken(data.username)}, {status: 200});
         } else if(query === false){
             return NextResponse.json({msg: "Incorrect"}, {status: 200});
         } else if(query === null){
