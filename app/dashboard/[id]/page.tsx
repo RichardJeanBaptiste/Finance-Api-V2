@@ -63,7 +63,6 @@ export default function Dashboard({params}: any) {
     }
 
     const removeQuote = (quoteToRemove: string) => {
-
         let temp =[...quotes];
         temp = temp.filter((item) => item !== quoteToRemove);
         SetQuotes(temp);
@@ -81,11 +80,14 @@ export default function Dashboard({params}: any) {
 
         axios.post('/api/add_quote', data)
         .then((response) => {
-            console.log(response);
+            if(response.data.msg === "Quote Saved"){
+                alert("Quotes Saved");
+                clearFields();
+                SetQuotes([]);
+            }
         }).catch((err) => {
             console.log(err);
         })
-        console.log("submit");
     }
 
     const clearFields = () => {
