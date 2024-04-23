@@ -16,7 +16,7 @@ export async function GET(request: NextRequest){
         }
 
         let query = await Quotes.find({});
-    
+
         return NextResponse.json(query, {status: 200});
   
     } catch (error) {
