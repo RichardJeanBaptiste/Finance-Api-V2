@@ -14,8 +14,8 @@ export async function GET(request: NextRequest){
     let modifiedUrl = url.href.replace(`${process.env.NEXT_PUBLIC_HOST}/api/all/`, '');
     let modifiedUrlArr = modifiedUrl.split("/");
 
-    let author = modifiedUrlArr[0].replace("_", " ");
-    let limit = modifiedUrlArr[1];
+    let author = modifiedUrlArr[2].replaceAll("_", " ");
+    let limit = modifiedUrlArr[3];
 
 
     try {
@@ -28,8 +28,6 @@ export async function GET(request: NextRequest){
         }
 
         let query = await Quotes.find({name: author}).then((docs) => {
-
-            console.log(docs.length)
 
             let range;
 
