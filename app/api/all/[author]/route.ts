@@ -9,7 +9,8 @@ export async function GET(request: NextRequest){
 
     const url = new URL(request.url);
     let modifiedUrl = url.href.replace(`${process.env.NEXT_PUBLIC_HOST}/api/all/`, '');
-    modifiedUrl = modifiedUrl.replace("_", " ");
+    modifiedUrl = modifiedUrl.replaceAll("_", " ");
+    modifiedUrl = modifiedUrl.replace("http://", "");
 
     console.log("author route")
     console.log(modifiedUrl)
