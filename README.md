@@ -1,6 +1,6 @@
-### Finance Quotes Api
+###                                                                            Finance Quotes Api
 
-# Access some of the greatest finance quotes from authors all over the world
+#                                                   Access some of the greatest finance quotes from authors all over the world
 
 
 ### Get all quotes:
