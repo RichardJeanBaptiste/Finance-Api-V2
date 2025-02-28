@@ -7,8 +7,12 @@ import jwt, { Secret } from 'jsonwebtoken';
 const saltRounds = 10;
 let secretKey: Secret; 
 
-if(process.env.NEXT_PUBLIC_SECRET_KEY != undefined){
-  secretKey= process.env.NEXT_PUBLIC_SECRET_KEY;
+// if(process.env.NEXT_PUBLIC_SECRET_KEY != undefined){
+//   secretKey= process.env.NEXT_PUBLIC_SECRET_KEY;
+// };
+
+if(process.env.SECRET_KEY != undefined){
+    secretKey = process.env.SECRET_KEY;
 };
 
 
@@ -21,7 +25,7 @@ export async function POST(request: Request){
 
 
     try {
-        let mongo_uri:string | undefined = process.env.NEXT_PUBLIC_MONGO_URI;
+        let mongo_uri:string | undefined = process.env.MONGO_URI;
 
         if(mongo_uri != undefined){
             await mongoose.connect(mongo_uri,{

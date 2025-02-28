@@ -26,7 +26,6 @@ export default function Dashboard({params}: any) {
         axios.post('/api/check_auth', {
             token: localStorage.getItem('jwtToken')
         }).then((response) => {
-            
             if(response.data.isLoggedIn === null){
                 console.log(null);
                 return;

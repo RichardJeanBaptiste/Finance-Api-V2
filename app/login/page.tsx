@@ -3,6 +3,7 @@
 import {useState} from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
+import "./styles.css";
 
 
 export default function Login() {
@@ -41,14 +42,18 @@ export default function Login() {
 
 
     return (
-        <div>
-            <h3>Admin Login</h3>
-            <br/>
-            <form action={handleSubmit}>
-                <input type="text" placeholder='username' onChange={handleUsername}/>
-                <input type="password" placeholder='password' onChange={handlePassword}/>
-                <input type="submit"/>
-            </form>
+        <div className='root'>
+            <div className='form_container'>
+                <h3 style={{ textAlign: 'center', marginTop: '20%'}}>Admin Login</h3>
+                <br/>
+                <form action={handleSubmit} className='login_form'>
+                    <div className='login_form1'>
+                        <input type="text" placeholder='username' onChange={handleUsername}/>
+                        <input type="password" placeholder='password' onChange={handlePassword}/>
+                        <input type="submit"/>
+                    </div>
+                </form>
+            </div> 
         </div>
     )   
     

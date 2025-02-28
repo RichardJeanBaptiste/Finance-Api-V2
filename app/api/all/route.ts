@@ -7,12 +7,17 @@ import { isDynamicServerError } from "next/dist/client/components/hooks-server-c
 
 export async function GET(request: NextRequest){
     try {
-        let mongo_uri:string | undefined = process.env.NEXT_PUBLIC_MONGO_URI;
+        //let mongo_uri:string | undefined = process.env.NEXT_PUBLIC_MONGO_URI;
+        let mongo_uri:string | undefined = process.env.MONGO_URI;
+
+        console.log(mongo_uri);
 
         if(mongo_uri != undefined){
             await mongoose.connect(mongo_uri,{
                 dbName:'Finance-Quotes',
             });
+        } else {
+            return NextResponse.json("Could Not Connect To Database", {status: 500});
         }
 
         let query = await Quotes.find({});

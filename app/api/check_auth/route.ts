@@ -4,9 +4,13 @@ import jwt, { Secret } from 'jsonwebtoken';
 
 let secretKey: Secret; 
 
-if(process.env.NEXT_PUBLIC_SECRET_KEY != undefined){
-  secretKey= process.env.NEXT_PUBLIC_SECRET_KEY;
+if(process.env.SECRET_KEY != undefined){
+  secretKey= process.env.SECRET_KEY;
 };
+
+// if(process.env.NEXT_PUBLIC_SECRET_KEY != undefined){
+//   secretKey= process.env.NEXT_PUBLIC_SECRET_KEY;
+// };
 
 function verifyToken(token: string) {
 
