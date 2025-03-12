@@ -37,7 +37,7 @@ export default function Dashboard({params}: any) {
                 SetSignedIn(false);
             }
         })
-    },[]);
+    },[params.id]);
 
 
     const handleChange = (e: any) => {
