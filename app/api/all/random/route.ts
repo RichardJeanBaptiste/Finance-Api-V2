@@ -31,7 +31,14 @@ export async function GET(request: NextRequest){
         });
 
         mongoose.disconnect();
-        return NextResponse.json({query}, {status: 200, headers:{'cache':'no-store'}})
+
+        const response = NextResponse.json({query}, {status: 200});
+        response.headers.set('Access-Control-Allow-Origin', '*'); // Allow all origins
+        response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+        response.headers.set('cache', 'no-store');
+
+        return response;
   
     } catch (error) {
   
