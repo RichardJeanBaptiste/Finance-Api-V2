@@ -33,7 +33,7 @@ export async function GET(request: NextRequest){
             }
 
             mongoose.disconnect();
-            console.log(quotelist);
+            //console.log(quotelist);
             return quotelist;
         });
     
@@ -44,7 +44,6 @@ export async function GET(request: NextRequest){
         response.headers.set('cache', 'no-store');
 
         return response;
-        //return NextResponse.json(query, {status: 200})
   
     } catch (error) {
   
@@ -52,5 +51,6 @@ export async function GET(request: NextRequest){
             throw error;
         }
         console.log(error);
+        return NextResponse.json(`Server Error: ${error}`, { status: 500 });
     }
 }

@@ -50,8 +50,13 @@ export async function GET(request: NextRequest){
             mongoose.disconnect();
             return quotelist;
         });
-    
-        return NextResponse.json(query, {status: 200})
+
+        const response = NextResponse.json(query, {status: 200});
+        response.headers.set('Access-Control-Allow-Origin', '*'); // Allow all origins
+        response.headers.set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+        return response;
   
     } catch (error) {
   
@@ -59,5 +64,6 @@ export async function GET(request: NextRequest){
             throw error;
         }
         console.log(error);
+        return NextResponse.json(`Server Error: ${error}`, { status: 500 });
     }
 }
