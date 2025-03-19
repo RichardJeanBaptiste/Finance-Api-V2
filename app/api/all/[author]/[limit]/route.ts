@@ -2,7 +2,6 @@ import { NextResponse, NextRequest } from "next/server";
 import mongoose from "mongoose";
 import { Quotes } from "../../../Schemas";
 import { isDynamicServerError } from "next/dist/client/components/hooks-server-context";
-import { parse } from "path";
 
 
 
